@@ -12,7 +12,6 @@
 * **Мини-приложение (Web-версия):** [https://sferum-cabinet.pages.dev](https://sferum-cabinet.pages.dev)
 * **VK Mini App:** [https://vk.com/app54807964](https://vk.com/app54807964)
 * **Репозиторий:** [https://github.com/basovmatveyy-web/xakaton](https://github.com/basovmatveyy-web/xakaton)
-* **Токен бота MAX:** `f9LHodD0cOJX1binrlWBycWED-mAlS-161FfBX83BtJMMXcyGKxxnz7oOhr9zWHrnXlyFVf9AeDTHSLo9m8o`
 
 ---
 
@@ -51,7 +50,7 @@ docker run -d \
   -p 80:80 \
   -p 5050:5050 \
   -e ASPNETCORE_ENVIRONMENT=Production \
-  -e MAX_BOT_TOKEN="f9LHodD0cOJX1binrlWBycWED-mAlS-161FfBX83BtJMMXcyGKxxnz7oOhr9zWHrnXlyFVf9AeDTHSLo9m8o" \
+  -e MAX_BOT_TOKEN="ВАШ_ТОКЕН_БОТА" \
   --name sferum-cabinet-app \
   sferum-cabinet:latest
 ```

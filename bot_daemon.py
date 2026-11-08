@@ -5,6 +5,7 @@
 Команда №23 «Девелопы» • Хакатон «Идея фикс»
 """
 
+import os
 import sys
 import time
 import json
@@ -22,7 +23,7 @@ logging.basicConfig(
     ]
 )
 
-BOT_TOKEN = "f9LHodD0cOJX1binrlWBycWED-mAlS-161FfBX83BtJMMXcyGKxxnz7oOhr9zWHrnXlyFVf9AeDTHSLo9m8o"
+BOT_TOKEN = os.environ.get("MAX_BOT_TOKEN") or "f9LHodD0cOJX1binrlWBycWED-mAlS-161FfBX83BtJMMXcyGKxxnz7oOhr9zWHrnXlyFVf9AeDTHSLo9m8o"
 BASE_URL = "https://platform-api2.max.ru"
 BASE_APP_URL = "https://sferum-cabinet.pages.dev"
 

@@ -10,7 +10,7 @@ services:
       - "5050:5050"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - MAX_BOT_TOKEN=f9LHodD0cOJX1binrlWBycWED-mAlS-161FfBX83BtJMMXcyGKxxnz7oOhr9zWHrnXlyFVf9AeDTHSLo9m8o
+      - MAX_BOT_TOKEN=${MAX_BOT_TOKEN:-f9LHodD0cOJX1binrlWBycWED-mAlS-161FfBX83BtJMMXcyGKxxnz7oOhr9zWHrnXlyFVf9AeDTHSLo9m8o}
       - SFERUM_SCHOOL_ID=maou-lit-nsk
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://127.0.0.1:5050/api/system/status || exit 1"]
