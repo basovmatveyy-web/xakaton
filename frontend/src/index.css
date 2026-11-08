@@ -1,0 +1,275 @@
+@import '@vkontakte/vkui/dist/vkui.css';
+@import 'katex/dist/katex.min.css';
+
+:root {
+  --sferum-accent: #2d82ec;
+  --sferum-accent-hover: #1f6fd4;
+}
+
+/* Custom Theme Overrides for VKUI */
+body[data-theme='oled'] {
+  --vkui--color_background_content: #000000;
+  --vkui--color_background: #08080a;
+  --vkui--color_header_background: #0a0a0f;
+  --vkui--color_text_primary: #f0f0f5;
+  --vkui--color_text_secondary: #9090a0;
+  --vkui--color_background_secondary: #121218;
+}
+
+body[data-theme='slate'] {
+  --vkui--color_background_content: #1e222b;
+  --vkui--color_background: #16181f;
+  --vkui--color_header_background: #1a1d24;
+  --vkui--color_text_primary: #e6edf3;
+  --vkui--color_text_secondary: #8b949e;
+  --vkui--color_background_secondary: #252a36;
+}
+
+body[data-theme='contrast'] {
+  --vkui--color_background_content: #ffffff;
+  --vkui--color_background: #f8fafc;
+  --vkui--color_header_background: #ffffff;
+  --vkui--color_text_primary: #0a0f1d;
+  --vkui--color_text_secondary: #1e293b;
+  --vkui--color_accent_blue: #0055d4;
+}
+
+/* Режим для слабовидящих: масштабирование шрифта (ГОСТ Р 52872) */
+html[data-a11y-font='large'] {
+  font-size: 115%;
+}
+html[data-a11y-font='xlarge'] {
+  font-size: 130%;
+}
+
+html[data-a11y-images='hidden'] img {
+  filter: grayscale(100%);
+  opacity: 0.15;
+}
+
+/* Smooth Transitions & Crisp Typography */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Roboto', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Printable A4 cutting lines */
+.cut-line {
+  border-top: 1px dashed #888;
+  position: relative;
+  margin: 16px 0;
+}
+
+/* Responsive & Touch Utilities for iPad and Mobile */
+@media (max-width: 1024px) {
+  .assessment-studio-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .responsive-split-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .responsive-tablet-stack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .responsive-tablet-col-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-phone-stack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .responsive-phone-col-1 {
+    grid-template-columns: 1fr !important;
+  }
+  .responsive-room-matrix {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .mobile-compact-padding {
+    padding: 12px 10px !important;
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .show-on-mobile {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-room-matrix {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .mobile-tiny-padding {
+    padding: 8px 6px !important;
+  }
+}
+
+/* Horizontal swipe strip for pills and segmented controls */
+.horizontal-scroll-pills {
+  display: flex !important;
+  align-items: center !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.horizontal-scroll-pills::-webkit-scrollbar {
+  display: none !important;
+}
+.horizontal-scroll-pills > * {
+  flex-shrink: 0 !important;
+}
+
+/* Responsive Table Wrapper with Momentum Scroll */
+.responsive-table-scroll {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+.responsive-table-scroll > * {
+  min-width: 620px !important;
+}
+
+/* Safe area insets for iOS devices (iPhone notch & dynamic island) */
+@supports (padding: max(0px)) {
+  .safe-area-header {
+    padding-top: max(12px, env(safe-area-inset-top)) !important;
+  }
+  .safe-area-bottom {
+    padding-bottom: max(16px, env(safe-area-inset-bottom)) !important;
+  }
+}
+.cut-line::after {
+  content: '✂ Линия отреза для раздачи';
+  position: absolute;
+  top: -9px;
+  right: 20px;
+  font-size: 11px;
+  background: var(--vkui--color_background_content);
+  padding: 0 8px;
+  color: #888;
+}
+
+.math-preview {
+  padding: 12px;
+  background: var(--vkui--color_background_secondary, #f5f6f8);
+  border-radius: 8px;
+  border-left: 3px solid var(--sferum-accent);
+  margin: 8px 0;
+}
+
+/* Generation & Thinking Animations */
+@keyframes aiThinkingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes aiPulseAura {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 119, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 16px 4px rgba(0, 198, 255, 0.5);
+  }
+}
+
+@keyframes aiShimmerWave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ai-message-card {
+  animation: messageFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ai-thinking-card {
+  position: relative;
+  border-radius: 16px;
+  background-clip: padding-box;
+}
+
+.ai-thinking-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(90deg, rgba(0, 119, 255, 0.15), rgba(0, 119, 255, 0.6), rgba(0, 119, 255, 0.15));
+  background-size: 200% 100%;
+  animation: aiThinkingGradient 2.6s ease infinite;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.ai-skeleton-wave {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.ai-skeleton-wave::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  animation: aiShimmerWave 1.8s ease-in-out infinite;
+}
+
+/* Print optimization for official documents and handouts */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+

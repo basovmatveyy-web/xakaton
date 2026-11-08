@@ -1,0 +1,47 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+frontend/dist/
+frontend/node_modules/
+.npm
+npm-debug.log*
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+backend/SferumCabinet.Api/bin/
+backend/SferumCabinet.Api/obj/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Wrangler & Deploy
+.wrangler/
+
+# MAX Bot runtime & schema
+max_bot.log
+max_bot.err.log
+max_schema.yaml
+
+# Bell presentation & scratch slide assets
+*.pptx
+*.png
+presentation_assets/
+presentation_processed_assets/
+preview_slides/
+preview_test_clean/
+slide_images/
+create_bell_presentation.py
+build_full_presentation.py
+test_layout_calc.py
+
+

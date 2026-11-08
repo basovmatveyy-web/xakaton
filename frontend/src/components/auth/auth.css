@@ -1,0 +1,360 @@
+/* ==========================================================================
+   СФЕРУМ.КАБИНЕТ — ДИЗАЙН-СИСТЕМА И ТЕМЫ АВТОРИЗАЦИИ (CRAFT ENGINEERING)
+   ========================================================================== */
+
+/* Общие переменные и анимации */
+@keyframes sferum-pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes sferum-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes sferum-subtle-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ТОКЕНЫ 4 ТЕМ ОФОРМЛЕНИЯ
+   1. Light: 'Сферум Классик'
+   2. OLED: 'OLED Тёмная'
+   3. Slate: 'Школьный грифель'
+   4. Contrast: 'ГОСТ Контраст'
+   -------------------------------------------------------------------------- */
+
+.sferum-auth-root {
+  --sferum-blue: #2d82ec;
+  --sferum-blue-hover: #1b6ed8;
+  --sferum-blue-active: #155bb5;
+  --sferum-purple: #7e14ff;
+  --sferum-cyan: #38bdf8;
+  --sferum-emerald: #10b981;
+  --sferum-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Roboto', 'Segoe UI', sans-serif;
+  
+  font-family: var(--sferum-font-sans);
+  min-height: 100vh;
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 1. ТЕМА: СФЕРУМ КЛАССИК (LIGHT) */
+.sferum-auth-root[data-theme='light'] {
+  --auth-bg: #f5f7fc;
+  --auth-bg-gradient: radial-gradient(at 0% 0%, rgba(45, 130, 236, 0.08) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, rgba(126, 20, 255, 0.05) 0px, transparent 50%),
+                      linear-gradient(180deg, #f8fafd 0%, #eef2f9 100%);
+  --auth-card-bg: rgba(255, 255, 255, 0.94);
+  --auth-card-border: rgba(226, 232, 240, 0.9);
+  --auth-card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(226, 232, 240, 0.8);
+  --auth-text-primary: #0f172a;
+  --auth-text-secondary: #475569;
+  --auth-text-muted: #64748b;
+  --auth-border-subtle: #e2e8f0;
+  --auth-pill-bg: rgba(241, 245, 249, 0.8);
+  --auth-security-bg: #ffffff;
+  --auth-security-border: #e2e8f0;
+  --auth-accent: #2d82ec;
+  --auth-accent-soft: rgba(45, 130, 236, 0.1);
+  --auth-header-bg: rgba(255, 255, 255, 0.85);
+  --auth-badge-bg: #ecfdf5;
+  --auth-badge-text: #065f46;
+  --auth-badge-border: #a7f3d0;
+}
+
+/* 2. ТЕМА: OLED DARK */
+.sferum-auth-root[data-theme='oled'] {
+  --auth-bg: #000000;
+  --auth-bg-gradient: radial-gradient(circle at 50% 0%, rgba(45, 130, 236, 0.15) 0%, transparent 60%),
+                      radial-gradient(circle at 100% 100%, rgba(126, 20, 255, 0.1) 0%, transparent 50%),
+                      #000000;
+  --auth-card-bg: rgba(10, 10, 15, 0.92);
+  --auth-card-border: rgba(39, 39, 42, 0.9);
+  --auth-card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(45, 130, 236, 0.2);
+  --auth-text-primary: #f8fafc;
+  --auth-text-secondary: #cbd5e1;
+  --auth-text-muted: #94a3b8;
+  --auth-border-subtle: #1e1e24;
+  --auth-pill-bg: rgba(24, 24, 30, 0.85);
+  --auth-security-bg: rgba(12, 12, 18, 0.95);
+  --auth-security-border: rgba(39, 39, 42, 0.8);
+  --auth-accent: #3b82f6;
+  --auth-accent-soft: rgba(59, 130, 246, 0.15);
+  --auth-header-bg: rgba(0, 0, 0, 0.85);
+  --auth-badge-bg: rgba(16, 185, 129, 0.12);
+  --auth-badge-text: #34d399;
+  --auth-badge-border: rgba(16, 185, 129, 0.3);
+}
+
+/* 3. ТЕМА: ШКОЛЬНЫЙ ГРИФЕЛЬ (SLATE) */
+.sferum-auth-root[data-theme='slate'] {
+  --auth-bg: #131720;
+  --auth-bg-gradient: radial-gradient(circle at 30% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                      linear-gradient(180deg, #161b26 0%, #10141d 100%);
+  --auth-card-bg: rgba(24, 30, 42, 0.92);
+  --auth-card-border: rgba(51, 65, 85, 0.7);
+  --auth-card-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(71, 85, 105, 0.5);
+  --auth-text-primary: #f1f5f9;
+  --auth-text-secondary: #cbd5e1;
+  --auth-text-muted: #94a3b8;
+  --auth-border-subtle: #2d3748;
+  --auth-pill-bg: rgba(30, 41, 59, 0.8);
+  --auth-security-bg: rgba(22, 28, 39, 0.95);
+  --auth-security-border: rgba(51, 65, 85, 0.8);
+  --auth-accent: #38bdf8;
+  --auth-accent-soft: rgba(56, 189, 248, 0.14);
+  --auth-header-bg: rgba(19, 23, 32, 0.88);
+  --auth-badge-bg: rgba(16, 185, 129, 0.15);
+  --auth-badge-text: #6ee7b7;
+  --auth-badge-border: rgba(16, 185, 129, 0.4);
+}
+
+/* 4. ТЕМА: ГОСТ КОНТРАСТ (ВЫСОКОКОНТРАСТНЫЙ СТАНДАРТ ДЛЯ СЛАБОВИДЯЩИХ И ГОССЛУЖБ) */
+.sferum-auth-root[data-theme='contrast'] {
+  --auth-bg: #ffffff;
+  --auth-bg-gradient: #ffffff;
+  --auth-card-bg: #ffffff;
+  --auth-card-border: #000000;
+  --auth-card-shadow: 6px 6px 0px #000000;
+  --auth-text-primary: #000000;
+  --auth-text-secondary: #000000;
+  --auth-text-muted: #111111;
+  --auth-border-subtle: #000000;
+  --auth-pill-bg: #ffffff;
+  --auth-security-bg: #ffffff;
+  --auth-security-border: #000000;
+  --auth-accent: #0000ee;
+  --auth-accent-soft: #fffde7;
+  --auth-header-bg: #ffffff;
+  --auth-badge-bg: #000000;
+  --auth-badge-text: #ffffff;
+  --auth-badge-border: #000000;
+}
+
+/* --------------------------------------------------------------------------
+   ИНЖЕНЕРИЯ КОМПОНЕНТОВ
+   -------------------------------------------------------------------------- */
+
+/* Кнопка Сферум ID: Премиальный тактильный стиль */
+.sferum-id-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #3388f5 0%, #1f72dc 100%);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(45, 130, 236, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sferum-id-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #3d90fc 0%, #2579e5 100%);
+  box-shadow: 0 6px 20px rgba(45, 130, 236, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.sferum-id-btn:active:not(:disabled) {
+  transform: scale(0.985) translateY(0);
+  box-shadow: 0 2px 8px rgba(45, 130, 236, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.sferum-id-btn:focus-visible {
+  outline: 3px solid rgba(45, 130, 236, 0.6);
+  outline-offset: 3px;
+}
+
+.sferum-id-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Особенный стиль кнопки для темы ГОСТ Контраст */
+.sferum-auth-root[data-theme='contrast'] .sferum-id-btn {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0 #000000;
+  border-radius: 4px;
+}
+
+.sferum-auth-root[data-theme='contrast'] .sferum-id-btn:hover:not(:disabled) {
+  background: #111111;
+  box-shadow: 6px 6px 0 #000000;
+  transform: translate(-2px, -2px);
+}
+
+.sferum-auth-root[data-theme='contrast'] .sferum-id-btn:active:not(:disabled) {
+  box-shadow: 2px 2px 0 #000000;
+  transform: translate(2px, 2px);
+}
+
+/* Свечение на кнопке (Shimmer) */
+.sferum-id-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.sferum-id-btn:hover::after {
+  left: 200%;
+  transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Индикатор статуса ГОСТ / РФ */
+.sferum-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--sferum-emerald);
+  display: inline-block;
+  animation: sferum-pulse-glow 2s infinite ease-in-out;
+}
+
+/* Фоновая архитектурная сетка */
+.sferum-grid-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+.sferum-auth-root[data-theme='oled'] .sferum-grid-background {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.sferum-auth-root[data-theme='contrast'] .sferum-grid-background {
+  display: none;
+}
+
+/* Карточки безопасности */
+.security-pillar-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--auth-security-bg);
+  border: 1px solid var(--auth-security-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sferum-auth-root[data-theme='contrast'] .security-pillar-card {
+  border: 2px solid #000000;
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #000000;
+}
+
+.security-pillar-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--auth-accent);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.12);
+}
+
+.sferum-auth-root[data-theme='contrast'] .security-pillar-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 #000000;
+}
+
+/* Переключатель тем в шапке */
+.theme-selector-pill {
+  display: flex;
+  align-items: center;
+  background: var(--auth-pill-bg);
+  border: 1px solid var(--auth-border-subtle);
+  border-radius: 12px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.sferum-auth-root[data-theme='contrast'] .theme-selector-pill {
+  border: 2px solid #000000;
+  border-radius: 0;
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: var(--auth-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sferum-auth-root[data-theme='contrast'] .theme-btn {
+  border-radius: 0;
+  font-weight: 700;
+  color: #000000;
+}
+
+.theme-btn:hover {
+  color: var(--auth-text-primary);
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.theme-btn.active {
+  background: var(--auth-card-bg);
+  color: var(--auth-accent);
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.sferum-auth-root[data-theme='contrast'] .theme-btn.active {
+  background: #000000;
+  color: #ffffff;
+  box-shadow: none;
+}

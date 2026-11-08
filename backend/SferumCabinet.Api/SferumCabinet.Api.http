@@ -1,0 +1,6 @@
+@SferumCabinet.Api_HostAddress = http://localhost:5183
+
+GET {{SferumCabinet.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
